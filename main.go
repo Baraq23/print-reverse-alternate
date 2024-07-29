@@ -23,11 +23,22 @@ func RevConcatAlternate(slice1, slice2 []int) []int {
 	if len(s1) > len(s2) {
 		newSlice = funcSlice(s1, s2)
 	} else {
-		newSlice = funcSlice(s2, s1)
+		newSlice = funcSlice1(s1, s2)
 	}
 	return newSlice
 }
-
+func funcSlice1(s1, s2 []int) []int {
+	new := []int{}
+	for i := len(s2)-1; i >= 0; i-- {
+		if i > len(s1)-1 {
+			new = append(new, s2[i])
+		} else {
+			new = append(new, s1[i])
+			new = append(new, s2[i])
+		}
+	}
+	return new
+}
 func funcSlice(s1, s2 []int) []int {
 	new := []int{}
 	for i := len(s1)-1; i >= 0; i-- {
